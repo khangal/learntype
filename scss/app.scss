@@ -1,6 +1,8 @@
 @import "normalize";
 @import "bourbon/bourbon";
 
+$grey: #444;
+
 body {
   font-family: $font-stack-helvetica;
 }
@@ -21,8 +23,14 @@ body {
       line-height: 2em;
       padding: 5px 10px;
       border-radius: 4px;
-      color: #444;
+      color: $grey;
       border: 1px solid #bbb;
     }
   }
+}
+
+.text {
+  border: 1px solid lightblue;
+  padding: 20px;
+  color: $grey;
 }
