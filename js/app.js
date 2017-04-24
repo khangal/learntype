@@ -1,55 +1,46 @@
 $(function(){
   window.onkeypress = function(e) {
-    typer.press(e.keyCode, e.shiftKey)
-    screen.update(typer.getLastKey())
+    letter = String.fromCharCode(e.keyCode);
+    screen.update(letter)
   }
+
+  screen.init();
 });
 
-var typer = {
-  lastKey: null,
-
-  press: function (keyCode, isShift){
-    // isShift = (typeof isShift !== 'undefined') ? isShift : false
-    if (isShift) {
-      keyCode = keyCode + 32;
-    }
-
-    switch (keyCode) {
-      case 97:
-        this.lastKey = 'й'
-        break;
-
-      case 109:
-        this.lastKey = 'м'
-        break;
-      
-      default:
-        break;
-    }
-
-    if (isShift) {
-      this.lastKey = this.lastKey.toUpperCase();
-    }
-  },
-
-  print: function(){
-    alert(this.lastKey);
-  },
-  
-  getLastKey: function(){
-    return this.lastKey
-  }
-}
-
 var screen = {
-  text: "Монгол орны балалалалалылблөлыблөо рйыбө",
   cursorPosition: 0,
+
+  init: function(){
+    this.cacheDom()
+    this.setText("Монгол орны байгаль газарзүйн шинж төрх эрт цаг бусад улс орны адилаар олонтоо хувьсан өөрчилөгдөж байжээ.Эрин, галав солигдох бүрд нэг бол сэрүүсч эсвэл бүр дулаарах, шинэ амьтан, ")
+    this.render();
+  },
+  cacheDom: function(){
+    this.$pre = $("#pre")
+    this.$cursor = $("#cursor")
+    this.$post = $("#post")
+  },
   
-  update: function(lastKey){
-    if (this.text[this.cursorPosition] == lastKey) {
-      console.log('correct');
-    } else {
-      console.log('wrong', this.text[this.cursorPosition], lastKey);
+  update: function(letter){
+    if(letter == this.text[this.cursorPosition]) {
+      this.cursorPosition++;
+      this.render()
     }
+    else {
+      console.log('boom wrong', letter, this.text[this.cursorPosition])
+    }
+
+  },
+
+  setText: function(text){
+    this.text = text;
+  },
+
+  render: function(){
+    var pre = this.text.substring(0, this.cursorPosition)
+    var post = this.text.slice(this.cursorPosition)
+
+    this.$pre.text(pre)
+    this.$post.text(post)
   }
 }
