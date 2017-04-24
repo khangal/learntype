@@ -1,0 +1,28 @@
+@import "normalize";
+@import "bourbon/bourbon";
+
+body {
+  font-family: $font-stack-helvetica;
+}
+
+.container {
+  margin: 0 auto;
+  width: 980px;
+  text-align: center;
+}
+
+.screen {
+  margin: 100px 0;
+  font-size: 24px;
+
+  .line {
+    .key {
+      box-sizing: border-box;
+      line-height: 2em;
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: #444;
+      border: 1px solid #bbb;
+    }
+  }
+}
