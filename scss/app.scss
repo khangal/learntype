@@ -35,11 +35,23 @@ body {
   border: 1px solid lightblue;
   padding: 20px;
   color: $grey;
+  font-size: 20px;
+  letter-spacing: .03ex;
+  position: relative;
+
+  span {
+    white-space: pre-wrap;
+  }
 }
 
 #cursor {
-  border-right: 1px solid black;
+  border-left: 1px solid black;
   animation: blinker 1s linear infinite;
+  position: absolute;
+}
+
+#pre {
+  color: #999;
 }
 
 @keyframes blinker {
