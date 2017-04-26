@@ -18,15 +18,19 @@ var screen = {
     this.$pre = $("#pre")
     this.$cursor = $("#cursor")
     this.$post = $("#post")
+    this.$text = $('.text')
   },
   
   update: function(letter){
     if(letter == this.text[this.cursorPosition]) {
       this.cursorPosition++;
       this.render()
+      this.$text.removeClass('wrong')
     }
     else {
-      console.log('boom wrong', letter, this.text[this.cursorPosition])
+      this.$text.removeClass('wrong').animate({'nothing': null}, 1, function(){
+        $(this).addClass('wrong')
+      })
     }
 
   },

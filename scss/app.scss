@@ -32,7 +32,7 @@ body {
 }
 
 .text {
-  border: 1px solid lightblue;
+  border: 2px solid lightblue;
   padding: 20px;
   color: $grey;
   font-size: 20px;
@@ -42,6 +42,10 @@ body {
   span {
     white-space: pre-wrap;
   }
+}
+
+.text.wrong {
+  animation: typo 200ms linear 0s 1 normal;
 }
 
 #cursor {
@@ -56,4 +60,14 @@ body {
 
 @keyframes blinker {
   50% { opacity: 0; }
+}
+
+@keyframes typo {
+  0% {
+    border-color: orange;
+  }
+
+  100% {
+    border-color: lightblue;
+  }
 }
