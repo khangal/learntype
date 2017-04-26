@@ -1,2 +1,3 @@
-.sass-cache/
-dist
+_site
+.sass-cache
+.jekyll-metadata
