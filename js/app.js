@@ -1,5 +1,9 @@
 $(function(){
   window.onkeypress = function(e) {
+    if (e.which == 32) {
+      e.preventDefault();
+    }
+
     letter = String.fromCharCode(e.which);
     screen.update(letter)
   }
