@@ -33,7 +33,7 @@ var stats = {
   errors: 0,
 
   cacheDom: function() {
-
+    
   },
 
   render: function(){

@@ -2,37 +2,13 @@
 # this line is for jekyll sass compile
 ---
 
-@import "normalize";
-
-$grey: #444;
-
-body {
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-}
+@import "base";
 
 .container {
   margin: 0 auto;
   width: 980px;
   text-align: center;
 }
-
-// .screen {
-//   margin: 100px 0;
-//   font-size: 24px;
-//
-//   .line {
-//     position:relative;
-//
-//     .key {
-//       box-sizing: border-box;
-//       line-height: 2em;
-//       padding: 5px 10px;
-//       border-radius: 4px;
-//       color: $grey;
-//       border: 1px solid #bbb;
-//     }
-//   }
-// }
 
 .screen {
   border: 2px solid lightblue;
