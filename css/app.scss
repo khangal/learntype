@@ -16,25 +16,25 @@ body {
   text-align: center;
 }
 
+// .screen {
+//   margin: 100px 0;
+//   font-size: 24px;
+//
+//   .line {
+//     position:relative;
+//
+//     .key {
+//       box-sizing: border-box;
+//       line-height: 2em;
+//       padding: 5px 10px;
+//       border-radius: 4px;
+//       color: $grey;
+//       border: 1px solid #bbb;
+//     }
+//   }
+// }
+
 .screen {
-  margin: 100px 0;
-  font-size: 24px;
-
-  .line {
-    position:relative;
-
-    .key {
-      box-sizing: border-box;
-      line-height: 2em;
-      padding: 5px 10px;
-      border-radius: 4px;
-      color: $grey;
-      border: 1px solid #bbb;
-    }
-  }
-}
-
-.text {
   border: 2px solid lightblue;
   padding: 20px;
   color: $grey;
@@ -47,7 +47,7 @@ body {
   }
 }
 
-.text.wrong {
+.screen.wrong {
   animation: typo 200ms linear 0s 1 normal;
 }
 

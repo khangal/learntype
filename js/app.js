@@ -1,22 +1,49 @@
 $(function(){
   window.onkeypress = function(e) {
+    // stop scrolling on space
     if (e.which == 32) {
       e.preventDefault();
     }
 
     letter = String.fromCharCode(e.which);
-    screen.update(letter)
+    screen.press(letter)
   }
 
-  $.getJSON('data.json', function(d) {
-    data = d
-    var text = data[Math.floor(Math.random() * data.length)];
-    screen.init(text);
+  exercises.load().done(function() {
+    screen.init(exercises.sample())
   })
 
 });
 
-var data;
+var exercises = {
+  data: [],
+
+  load: function() {
+    return $.getJSON('data.json', function(d) {
+      this.data = d
+    }.bind(this))
+  },
+  
+  sample: function() {
+    return this.data[Math.floor(Math.random() * this.data.length)]
+  }
+};
+
+var stats = {
+  errors: 0,
+
+  cacheDom: function() {
+
+  },
+
+  render: function(){
+    
+  },
+
+  hide: function() {
+
+  }
+}
 
 var screen = {
   cursorPosition: 0,
@@ -25,22 +52,24 @@ var screen = {
     this.cacheDom()
     this.setText(text)
   },
+
   cacheDom: function(){
     this.$pre = $("#pre")
     this.$cursor = $("#cursor")
     this.$post = $("#post")
-    this.$text = $('.text')
+    this.$screen = $('.screen')
   },
   
-  update: function(letter){
+  press: function(letter){
     if(letter == this.text[this.cursorPosition]) {
       this.cursorPosition++;
       this.render()
-      this.$text.removeClass('wrong')
+      this.$screen.removeClass('wrong')
     }
     else {
-      this.$text.removeClass('wrong').animate({'nothing': null}, 1, function(){
+      this.$screen.removeClass('wrong').animate({'nothing': null}, 1, function(){
         $(this).addClass('wrong')
+        stats.errors++;
       })
     }
 
@@ -64,9 +93,19 @@ var screen = {
     this.$post.text(post)
   },
 
-  end: function() {
-    alert("ended")
+  reset: function() {
     this.cursorPosition = 0
     this.render()
+    this.setText(exercises.sample())
+    this.$screen.show()
+  },
+
+  hide: function() {
+    this.$screen.hide()
+  },
+
+  end: function() {
+    this.hide()
+    stats.render()
   }
 }
