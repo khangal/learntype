@@ -9,6 +9,7 @@ $(function(){
     screen.press(letter)
   }
 
+  stats.init()
   exercises.load().done(function() {
     screen.init(exercises.sample())
   })
@@ -30,14 +31,21 @@ var exercises = {
 };
 
 var stats = {
-  errors: 0,
+  errorCount: 0,
 
-  cacheDom: function() {
-    
+  init: function() {
+    this.cacheDom()
   },
 
-  render: function(){
-    
+  cacheDom: function() {
+    this.$stats = $('#stats')
+    this.$correct = $('#correct')
+    this.$error = $('#error')
+  },
+
+  show: function(){
+    this.$error.text(this.errorCount)
+    this.$stats.show()
   },
 
   hide: function() {
@@ -64,12 +72,12 @@ var screen = {
     if(letter == this.text[this.cursorPosition]) {
       this.cursorPosition++;
       this.render()
-      this.$screen.removeClass('wrong')
+      this.$screen.removeClass('screen--warn')
     }
     else {
-      this.$screen.removeClass('wrong').animate({'nothing': null}, 1, function(){
-        $(this).addClass('wrong')
-        stats.errors++;
+      this.$screen.removeClass('screen--warn').animate({'nothing': null}, 1, function(){
+        $(this).addClass('screen--warn')
+        stats.errorCount++;
       })
     }
 
@@ -106,6 +114,6 @@ var screen = {
 
   end: function() {
     this.hide()
-    stats.render()
+    stats.show()
   }
 }

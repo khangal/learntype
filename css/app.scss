@@ -3,50 +3,6 @@
 ---
 
 @import "base";
-
-.container {
-  margin: 0 auto;
-  width: 980px;
-  text-align: center;
-}
-
-.screen {
-  border: 2px solid lightblue;
-  padding: 20px;
-  color: $grey;
-  font-size: 20px;
-  letter-spacing: .03ex;
-  position: relative;
-
-  span {
-    white-space: pre-wrap;
-  }
-}
-
-.screen.wrong {
-  animation: typo 200ms linear 0s 1 normal;
-}
-
-#cursor {
-  border-left: 1px solid black;
-  animation: blinker 1s linear infinite;
-  position: absolute;
-}
-
-#pre {
-  color: #999;
-}
-
-@keyframes blinker {
-  50% { opacity: 0; }
-}
-
-@keyframes typo {
-  0% {
-    border-color: orange;
-  }
-
-  100% {
-    border-color: lightblue;
-  }
-}
+@import "layout";
+@import "components/screen";
+@import "components/stats";

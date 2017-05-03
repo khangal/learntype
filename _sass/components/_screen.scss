@@ -1,0 +1,41 @@
+.screen {
+  border: 2px solid lightblue;
+  padding: 20px;
+  color: $grey;
+  font-size: 20px;
+  letter-spacing: .03ex;
+  position: relative;
+  text-align: center;
+
+  span {
+    white-space: pre-wrap;
+  }
+
+  &__pre {
+    color: #999;
+  }
+
+  &__cursor {
+    border-left: 1px solid black;
+    animation: blinker 1s linear infinite;
+    position: absolute;
+  }
+
+  &--warn {
+    animation: warn 200ms linear 0s 1 normal;
+  }
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+@keyframes warn {
+  0% {
+    border-color: orange;
+  }
+
+  100% {
+    border-color: lightblue;
+  }
+}

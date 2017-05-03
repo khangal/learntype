@@ -7,9 +7,15 @@
 </head>
 <body>
   <div class="container">
-    <h2>Бууз идэхгүйгээр хурдан бичиж сурцгаая!</h2>
+    <h2 style="text-align: center">Бууз идэхгүйгээр хурдан бичиж сурцгаая!</h2>
     <div class="screen">
-      <span id="pre"></span><span id="cursor"> </span><span id="post"></span>
+      <span class="screen__pre" id="pre"></span><span class="screen__cursor"
+        id="cursor"> </span><span class="screen__post" id="post"></span>
+    </div>
+
+    <div id="stats" class="stats" style="display: none">
+      <!-- <div class="stats__correct">Оновчтой: <span id="correct"></span></div> -->
+      <span class="stats__error">Алдсан: <span id="error"></span></span>
     </div>
 
     <img src="images/keyboard_keys_position.gif" alt=""/>
