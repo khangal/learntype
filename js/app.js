@@ -35,12 +35,18 @@ var stats = {
 
   init: function() {
     this.cacheDom()
+
+    this.$start.click(function(){
+      this.hide()
+      screen.reset()
+    }.bind(this))
   },
 
   cacheDom: function() {
     this.$stats = $('#stats')
     this.$correct = $('#correct')
     this.$error = $('#error')
+    this.$start = $('#start')
   },
 
   show: function(){
@@ -49,7 +55,7 @@ var stats = {
   },
 
   hide: function() {
-
+    this.$stats.hide()
   }
 }
 

@@ -1,6 +1,9 @@
 .container {
+  min-height: 100%;
+
   margin: 0 auto;
-  width: 980px;
+  margin-bottom: 50px;
+  width: 960px;
   
   h2 {
     text-align: center;
@@ -9,5 +12,21 @@
   img {
     display: block;
     margin: 0 auto;
+  }
+}
+
+footer {
+  margin: 0 auto;
+  padding: 10px 0;
+  border-top: 1px solid lightblue;
+  text-align: center;
+  width: 960px;
+
+  a {
+    color: lightblue;
+  }
+
+  i {
+    padding: 5px;
   }
 }
