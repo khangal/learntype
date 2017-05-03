@@ -14,7 +14,7 @@
   }
 }
 
-footer {
+.footer {
   margin: 0 auto;
   padding: 10px 0;
   border-top: 1px solid lightblue;
@@ -23,6 +23,11 @@ footer {
 
   a {
     color: lightblue;
+    transition: 0.2s;
+
+    &:hover {
+      color: darkcyan;
+    }
   }
 
   i {
