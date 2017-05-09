@@ -1,6 +1,15 @@
 @import "normalize";
 
 $grey: #444 !default;
+$black: black !default;
+$softgrey: #DDD !default;
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 body {
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
