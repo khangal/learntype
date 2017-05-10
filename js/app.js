@@ -6,10 +6,12 @@ $(function(){
     }
 
     letter = String.fromCharCode(e.which);
+    console.log(letter, e.keyCode)
     screen.press(letter)
   }
 
   stats.init()
+  keyboard.init()
   exercises.load().done(function() {
     screen.init(exercises.sample())
   })
@@ -105,6 +107,7 @@ var screen = {
 
     this.$pre.text(pre)
     this.$post.text(post)
+    keyboard.highlight(this.text[this.cursorPosition])
   },
 
   reset: function() {
@@ -120,6 +123,41 @@ var screen = {
 
   end: function() {
     this.hide()
+    keyboard.lightoff()
     stats.show()
+  }
+}
+
+var keyboard = {
+  keys: {},
+
+  init: function() {
+    this.cacheDom()
+  },
+
+  cacheDom: function() {
+    var _self = this;
+
+    $('.key').each(function(){
+      var obj = {}
+      char = $(this).data("key")
+      _self.keys[char] = $(this)
+      // _self.keys.push(obj)
+    })
+  },
+
+  highlight: function(letter) {
+    letter = letter.toLowerCase()
+
+    this.keys[letter].addClass('key--active')
+    if (this.$lastKey) {
+      this.$lastKey.removeClass('key--active')
+    }
+
+    this.$lastKey = this.keys[letter]
+  },
+
+  lightoff: function() {
+    this.$lastKey.removeClass('key--active')
   }
 }

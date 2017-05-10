@@ -12,17 +12,21 @@
     display: block;
     margin: 0 auto;
   }
+
+  &-top-wrapper {
+    min-height: 130px;
+  }
 }
 
 .footer {
   margin: 0 auto;
   padding: 10px 0;
-  border-top: 1px solid lightblue;
+  border-top: 1px solid $lightblue;
   text-align: center;
   width: 960px;
 
   a {
-    color: lightblue;
+    color: $lightblue;
     transition: 0.2s;
 
     &:hover {

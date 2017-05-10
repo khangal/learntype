@@ -20,6 +20,7 @@
   background: white;
   border-radius: 5px;
   padding: 1em;
+  text-transform: uppercase;
 
   min-width: 3em;
   min-height: 3em;
@@ -28,6 +29,10 @@
     text-transform: lowercase;
     font-size: smaller;
     height: 3rem;
+  }
+
+  &--active {
+    background: $lightblue;
   }
 }
 

@@ -8,83 +8,85 @@
 </head>
 <body>
   <div class="container">
-    <div class="screen">
-      <span class="screen__pre" id="pre"></span><span class="screen__cursor"
-        id="cursor"> </span><span class="screen__post" id="post"></span>
-    </div>
+    <div class="container-top-wrapper">
+      <div class="screen">
+        <span class="screen__pre" id="pre"></span><span class="screen__cursor"
+          id="cursor"> </span><span class="screen__post" id="post"></span>
+      </div>
 
-    <div id="stats" class="stats" style="display: none">
-      <!-- <div class="stats__correct">Оновчтой: <span id="correct"></span></div> -->
-      <span class="stats__error">Алдаа: <span id="error"></span></span>
-      <button id="start" class="stats__start">Эхлэх</button>
+      <div id="stats" class="stats" style="display: none">
+        <!-- <div class="stats__correct">Оновчтой: <span id="correct"></span></div> -->
+        <span class="stats__error">Алдаа: <span id="error"></span></span>
+        <button id="start" class="stats__start">Эхлэх</button>
+      </div>
     </div>
 
     <div class="keyboard">
       <div class="key-row">
-        <div class="key">+</div>
-        <div class="key">№</div>
-        <div class="key">-</div>
-        <div class="key">"</div>
-        <div class="key">₮</div>
-        <div class="key">:</div>
-        <div class="key">.</div>
-        <div class="key">_</div>
-        <div class="key">,</div>
-        <div class="key">%</div>
-        <div class="key">?</div>
-        <div class="key">Е</div>
-        <div class="key">Щ</div>
-        <div class="key key--modifier right" style="width: 5em">Back</div>
+        <div class="key" data-key="+" data-key-shifted="=">+</div>
+        <div class="key" data-key="№" data-key-shifted="1">№</div>
+        <div class="key" data-key="-" data-key-shifted="2">-</div>
+        <div class="key" data-key='"' data-key-shifted="3">"</div>
+        <div class="key" data-key="₮" data-key-shifted="4">₮</div>
+        <div class="key" data-key=":" data-key-shifted="5">:</div>
+        <div class="key" data-key="." data-key-shifted="6">.</div>
+        <div class="key" data-key="_" data-key-shifted="7">_</div>
+        <div class="key" data-key="," data-key-shifted="8">,</div>
+        <div class="key" data-key="%" data-key-shifted="9">%</div>
+        <div class="key" data-key="?" data-key-shifted="0">?</div>
+        <div class="key" data-key="е" data-key-shifted="Е">е</div>
+        <div class="key" data-key="щ" data-key-shifted="Щ">щ</div>
+        <div class="key key--modifier right" style="width: 5em" data-key="45">Back</div>
       </div>
       <div class="key-row">
-        <div class="key key--modifier left" style="width: 4em;">Tab</div>
-        <div class="key">Ф</div>
-        <div class="key">Ц</div>
-        <div class="key">У</div>
-        <div class="key">Ж</div>
-        <div class="key">Э</div>
-        <div class="key">Н</div>
-        <div class="key">Г</div>
-        <div class="key">Ш</div>
-        <div class="key">Ү</div>
-        <div class="key">З</div>
-        <div class="key">К</div>
-        <div class="key">Ъ</div>
+        <div class="key key--modifier left" style="width: 4em;" data-key="45">Tab</div>
+        <div class="key" data-key="ф" data-key-shifted="Ф">ф</div>
+        <div class="key" data-key="ц" data-key-shifted="Ц">ц</div>
+        <div class="key" data-key="у" data-key-shifted="У">у</div>
+        <div class="key" data-key="ж" data-key-shifted="Ж">ж</div>
+        <div class="key" data-key="э" data-key-shifted="Э">э</div>
+        <div class="key" data-key="н" data-key-shifted="Н">н</div>
+        <div class="key" data-key="г" data-key-shifted="Г">г</div>
+        <div class="key" data-key="ш" data-key-shifted="Ш">ш</div>
+        <div class="key" data-key="ү" data-key-shifted="Ү">ү</div>
+        <div class="key" data-key="з" data-key-shifted="З">з</div>
+        <div class="key" data-key="к" data-key-shifted="К">к</div>
+        <div class="key" data-key="ъ" data-key-shifted="Ъ">ъ</div>
       </div>
       <div class="key-row">
         <div class="key key--modifier left" style="width: 5em">Caps</div>
-        <div class="key">Й</div>
-        <div class="key">Ы</div>
-        <div class="key">Б</div>
-        <div class="key">Ө</div>
-        <div class="key">А</div>
-        <div class="key">Х</div>
-        <div class="key">Р</div>
-        <div class="key">О</div>
-        <div class="key">Л</div>
-        <div class="key">Д</div>
-        <div class="key">П</div>
-        <div class="key key--modifier right" style="width: 7em">Enter</div>
+        <div class="key" data-key="й" data-key-shifted="Й">й</div>
+        <div class="key" data-key="ы" data-key-shifted="Ы">ы</div>
+        <div class="key" data-key="б" data-key-shifted="Б">б</div>
+        <div class="key" data-key="ө" data-key-shifted="Ө">ө</div>
+        <div class="key" data-key="а" data-key-shifted="А">а</div>
+        <div class="key" data-key="х" data-key-shifted="Х">х</div>
+        <div class="key" data-key="р" data-key-shifted="Р">р</div>
+        <div class="key" data-key="о" data-key-shifted="О">о</div>
+        <div class="key" data-key="л" data-key-shifted="Л">л</div>
+        <div class="key" data-key="д" data-key-shifted="Д">д</div>
+        <div class="key" data-key="п" data-key-shifted="П">п</div>
+        <div class="key key--modifier right" style="width: 7em" data-key="13" data-key-shifted=" 51">Enter</div>
       </div>
       <div class="key-row">
         <div class="key key--modifier left" style="width: 6em">Shift</div>
-        <div class="key">Я</div>
-        <div class="key">Ч</div>
-        <div class="key">Ё</div>
-        <div class="key">С</div>
-        <div class="key">М</div>
-        <div class="key">И</div>
-        <div class="key">Т</div>
-        <div class="key">Ь</div>
-        <div class="key">В</div>
-        <div class="key">Ю</div>
-        <div class="key key--modifier right" style="width: 9.5em">Shift</div>
+        <div class="key" data-key="я" data-key-shifted="Я">я</div>
+        <div class="key" data-key="ч" data-key-shifted="Ч">ч</div>
+        <div class="key" data-key="ё" data-key-shifted="Ё">ё</div>
+        <div class="key" data-key="с" data-key-shifted="С">с</div>
+        <div class="key" data-key="м" data-key-shifted="М">м</div>
+        <div class="key" data-key="и" data-key-shifted="И">и</div>
+        <div class="key" data-key="т" data-key-shifted="Т">т</div>
+        <div class="key" data-key="ь" data-key-shifted="Ь">ь</div>
+        <div class="key" data-key="в" data-key-shifted="В">в</div>
+        <div class="key" data-key="ю" data-key-shifted="Ю">ю</div>
+        <div class="key key--modifier right" style="width: 9.5em" data-key="45" data-key-shifted=" 51">Shift</div>
       </div>
       <div class="key-row">
         <div class="key key--modifier left" style="width: 5em">Ctrl</div>
         <div class="key key--modifier" style="width: 5em">Cmd</div>
         <div class="key key--modifier" style="width: 5em">Alt</div>
-        <div class="key key--modifier" style="width: 23em">Space</div>
+        <div data-key=" " class="key key--modifier" style="width: 23em">Space</div>
         <div class="key key--modifier" style="width: 5em">Alt</div>
         <div class="key key--modifier" style="width: 5em">Cmd</div>
         <div class="key key--modifier right" style="width: 5em">Ctrl</div>
@@ -94,7 +96,6 @@
   </div>
 
   <footer class="footer">
-    
     <br>
     <a href="mailto:khangaljargal@gmail.com"
       target="_top"><i class="fa fa-envelope fa-4x" aria-hidden="true"></i></a>
