@@ -1,7 +1,7 @@
 .keyboard {
-  margin: 4em auto 0 auto;
-  padding: 1em;
-  width: 48em;
+  margin: 4rem auto 0 auto;
+  padding: 1rem;
+  width: 48rem;
   
   border: 1px solid grey;
   border-radius: 10px;
@@ -27,20 +27,33 @@
   margin: 2px;
   background: white;
   border-radius: 5px;
-  padding: 1em;
+  padding: 1rem;
   text-transform: uppercase;
 
-  min-width: 3em;
-  min-height: 3em;
+  min-width: 3rem;
+  min-height: 3rem;
 
   &--modifier {
     text-transform: lowercase;
     font-size: smaller;
-    height: 3rem;
   }
 
   &--active {
     background: $lightblue;
+  }
+
+  &--double {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: smaller;
+    justify-content: space-between;
+  }
+
+  sup {
+    // display: block;
+    // padding: 0.1rem;
+    // padding-left: 0.3rem;
   }
 }
 
