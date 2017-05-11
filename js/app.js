@@ -6,14 +6,14 @@ $(function(){
     }
 
     letter = String.fromCharCode(e.which);
-    console.log(letter, e.keyCode);
+    // console.log(e.shiftKey);
     screen.press(letter);
   }
 
   stats.init();
   keyboard.init();
   exercises.load().done(function() {
-    screen.init(exercises.sample());
+    screen.init();
   })
 
 });
@@ -64,9 +64,9 @@ var stats = {
 var screen = {
   cursorPosition: 0,
 
-  init: function(text){
+  init: function(){
     this.cacheDom();
-    this.setText(text);
+    this.reset();
   },
 
   cacheDom: function(){
@@ -93,7 +93,6 @@ var screen = {
 
   setText: function(text){
     this.text = text;
-    this.render();
   },
 
   render: function(){
@@ -112,8 +111,8 @@ var screen = {
 
   reset: function() {
     this.cursorPosition = 0;
-    this.render();
     this.setText(exercises.sample());
+    this.render();
     this.$screen.show();
   },
 
@@ -140,16 +139,24 @@ var keyboard = {
 
     $('.key').each(function(){
       var obj = {};
-      char = $(this).data("key");
+      var char = $(this).data("key");
       _self.keys[char] = $(this);
-      // _self.keys.push(obj)
+
+      var shifted = {}
+      char = $(this).data("key-shifted");
+      _self.keys[char] = $(this);
     })
   },
 
   highlight: function(letter) {
-    letter = letter.toLowerCase();
+    if (/[А-Я]|[0-9]|=/.test(letter)) {
+      this.keys["shift"].addClass('key--active')
+    } else {
+      this.keys["shift"].removeClass('key--active')
+    }
 
     this.keys[letter].addClass('key--active');
+
     if (this.$lastKey) {
       this.$lastKey.removeClass('key--active');
     }
