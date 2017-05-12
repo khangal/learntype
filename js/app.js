@@ -18,7 +18,6 @@ $(function(){
     world.render('SHOW_EXERCISE');
   })
 
-
 });
 
 var world = {
@@ -34,6 +33,7 @@ var world = {
       case 'SHOW_STATS':
         screen.hide();
         keyboard.lightoff();
+        keyboard.hide();
         stats.render();
         stats.show();
         break;
@@ -64,17 +64,16 @@ var stats = {
   init: function() {
     this.cacheDom();
 
-    this.$start.click(function(){
-      this.hide();
-      screen.reset();
-    }.bind(this));
+    this.$restart.click(function(){
+      world.render("SHOW_EXERCISE");
+    });
 
     this.startTime = new Date();
   },
 
   cacheDom: function() {
     this.$stats = $('#stats');
-    this.$start = $('#start');
+    this.$restart = $('#restart');
     this.$errorCount = $('.stat--error .stat__measurement');
     this.$accuracy = $('.stat--accuracy .stat__measurement');
     this.$time = $('.stat--time .stat__measurement');
@@ -83,10 +82,12 @@ var stats = {
 
   show: function(){
     this.$stats.show();
+    this.$restart.show();
   },
 
   hide: function() {
     this.$stats.hide();
+    this.$restart.hide();
   },
 
   render: function() {
@@ -194,6 +195,8 @@ var keyboard = {
   },
 
   cacheDom: function() {
+    this.$keyboard = $('.keyboard');
+
     var _self = this;
 
     $('.key').each(function(){
@@ -225,5 +228,13 @@ var keyboard = {
 
   lightoff: function() {
     this.$lastKey.removeClass('key--active');
+  },
+
+  show: function() {
+    this.$keyboard.show();
+  },
+
+  hide: function() {
+    this.$keyboard.hide();
   }
 }
