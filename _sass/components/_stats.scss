@@ -1,3 +1,27 @@
-.stats {
-  
+.flex-stats {
+  margin-top: 5rem;
+  display: flex;
+
+  justify-content: center;
+  height: 7rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 1rem;
+  flex: 1;
+
+  padding: 1rem;
+  border: 1px solid $lightgrey;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.4);
+}
+
+.stat__title {
+  font-size: smaller;
+}
+
+.stat__measurement {
+  font-size: xx-large;
 }

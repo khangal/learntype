@@ -42,22 +42,53 @@ var stats = {
       this.hide();
       screen.reset();
     }.bind(this));
+
+    this.startTime = new Date();
   },
 
   cacheDom: function() {
     this.$stats = $('#stats');
-    this.$correct = $('#correct');
-    this.$error = $('#error');
     this.$start = $('#start');
+    this.$errorCount = $('.stat--error .stat__measurement');
+    this.$accuracy = $('.stat--accuracy .stat__measurement');
+    this.$time = $('.stat--time .stat__measurement');
+    this.$problems = $('.stat--problem-keys .stat__measurement');
   },
 
   show: function(){
-    this.$error.text(this.errorCount);
+    this.$errorCount.text(this.errorCount);
     this.$stats.show();
   },
 
   hide: function() {
     this.$stats.hide();
+  },
+
+  render: function() {
+    this.$errorCount.text(this.getErrorCount());
+    this.$accuracy.text(this.getAccuracy());
+    this.$time.text(this.getTime());
+  },
+
+  reset: function() {
+    this.errorCount = 0;
+  },
+
+  getProblem: function() {
+    
+  },
+
+  getErrorCount: function() {
+    return this.errorCount;
+  },
+
+  getTime: function() {
+    return (new Date() - this.startTime) / 1000.0 + " сек";
+  },
+
+  getAccuracy: function() {
+    var errorPercent = Math.round(this.errorCount * 100 / screen.text.length);
+    return 100 - errorPercent + "%";
   }
 }
 
@@ -77,6 +108,11 @@ var screen = {
   },
   
   press: function(letter){
+    if (this.firstKey) {
+      stats.startTime = new Date();
+      this.firstKey = false;
+    }
+    
     if(letter == this.text[this.cursorPosition]) {
       this.cursorPosition++;
       this.render();
@@ -111,6 +147,7 @@ var screen = {
 
   reset: function() {
     this.cursorPosition = 0;
+    this.firstKey = false;
     this.setText(exercises.sample());
     this.render();
     this.$screen.show();
@@ -123,6 +160,7 @@ var screen = {
   end: function() {
     this.hide();
     keyboard.lightoff();
+    stats.render();
     stats.show();
   }
 }
