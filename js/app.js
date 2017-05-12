@@ -7,16 +7,42 @@ $(function(){
 
     letter = String.fromCharCode(e.which);
     // console.log(e.shiftKey);
-    screen.press(letter);
+    screen.moveCursor(letter);
   }
 
   stats.init();
   keyboard.init();
+  screen.init();
+
   exercises.load().done(function() {
-    screen.init();
+    world.render('SHOW_EXERCISE');
   })
 
+
 });
+
+var world = {
+  render: function(action) {
+    switch (action) {
+      case 'SHOW_EXERCISE':
+        stats.hide();
+        screen.reset();
+        screen.render();
+        screen.show();
+        break;
+
+      case 'SHOW_STATS':
+        screen.hide();
+        keyboard.lightoff();
+        stats.render();
+        stats.show();
+        break;
+
+      default:
+        break;
+    }
+  }
+}
 
 var exercises = {
   data: [],
@@ -56,7 +82,6 @@ var stats = {
   },
 
   show: function(){
-    this.$errorCount.text(this.errorCount);
     this.$stats.show();
   },
 
@@ -97,7 +122,6 @@ var screen = {
 
   init: function(){
     this.cacheDom();
-    this.reset();
   },
 
   cacheDom: function(){
@@ -107,13 +131,13 @@ var screen = {
     this.$screen = $('.screen');
   },
   
-  press: function(letter){
+  moveCursor: function(letter){
     if (this.firstKey) {
       stats.startTime = new Date();
       this.firstKey = false;
     }
     
-    if(letter == this.text[this.cursorPosition]) {
+    if (letter == this.text[this.cursorPosition]) {
       this.cursorPosition++;
       this.render();
       this.$screen.removeClass('screen--warn');
@@ -132,8 +156,10 @@ var screen = {
   },
 
   render: function(){
+
+    // Text is ended
     if (this.text.length == this.cursorPosition) {
-      this.end();
+      world.render('SHOW_STATS')
       return;
     }
 
@@ -147,21 +173,16 @@ var screen = {
 
   reset: function() {
     this.cursorPosition = 0;
-    this.firstKey = false;
+    this.firstKey = true;
     this.setText(exercises.sample());
-    this.render();
-    this.$screen.show();
   },
 
   hide: function() {
     this.$screen.hide();
   },
 
-  end: function() {
-    this.hide();
-    keyboard.lightoff();
-    stats.render();
-    stats.show();
+  show: function() {
+    this.$screen.show();
   }
 }
 
